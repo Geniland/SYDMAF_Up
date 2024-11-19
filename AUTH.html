@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion & Inscription</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Style général */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #4CAF50, #81C784);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+}
+
+/* Conteneur principal */
+.form-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Toggle entre connexion et inscription */
+.form-toggle {
+    display: flex;
+    justify-content: center;
+    background: #4CAF50;
+}
+
+.form-toggle button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-toggle button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Contenu des formulaires */
+.form-content {
+    padding: 30px;
+}
+
+/* Formulaires */
+.form {
+    display: none;
+    text-align: center;
+}
+
+.form.active {
+    display: block;
+}
+
+.form h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    background: #4CAF50;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form button:hover {
+    background: #45A049;
+}
+
+.form p {
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.form a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-toggle">
+            <button id="btn-login" onclick="showLogin()">Connexion</button>
+            <button id="btn-register" onclick="showRegister()">Inscription</button>
+        </div>
+        <div class="form-content">
+            <!-- Formulaire de connexion -->
+            <form id="login-form" class="form active" onsubmit="return false">
+                <h2>Connexion</h2>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+                <p>Pas encore inscrit ? <a href="#" onclick="showRegister()">Créer un compte</a></p>
+                <p>retour <a href="index.html" >Page d'accueil</a></p>
+
+            </form>
+
+            <!-- Formulaire d'inscription -->
+            <form id="register-form" class="form" onsubmit="return false">
+                <h2>Inscription</h2>
+                <input type="text" placeholder="Nom complet" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button type="submit">S'inscrire</button>
+                <p>Déjà un compte ? <a href="#" onclick="showLogin()">Se connecter</a></p>
+                <p>retour <a href="index.html" >Page d'accueil</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher le formulaire de connexion
+        function showLogin() {
+            document.getElementById('login-form').classList.add('active');
+            document.getElementById('register-form').classList.remove('active');
+        }
+
+        // Fonction pour afficher le formulaire d'inscription
+        function showRegister() {
+            document.getElementById('register-form').classList.add('active');
+            document.getElementById('login-form').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
