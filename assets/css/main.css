@@ -44,6 +44,10 @@
   --surface-color: #ffffff;
 }
 
+a{
+  text-decoration: none;
+}
+
 .dark-background {
   --background-color: #097d10;
   --default-color: #ffffff;
