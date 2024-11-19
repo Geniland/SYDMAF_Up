@@ -566,7 +566,6 @@ a {
 }
 a:hover {
   --baikal-link-color-rgb: var(--baikal-link-hover-color-rgb);
-  /* text-decoration: underline; */
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
