@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion & Inscription</title>
-    
+    <!-- /////////////// -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Style général */
@@ -78,7 +80,10 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    
 }
+
+
 
 .form button {
     width: 100%;
@@ -112,6 +117,53 @@ body {
     text-decoration: underline;
 }
 
+.telparent{
+    position: relative;
+}
+.dropabsolut{
+    position: absolute;
+    bottom: 15px;
+    left: 3px;
+}
+.telparent .inputel{
+    padding-left: 80px;
+}
+.dropdiv{
+    max-height:250px; 
+    width: 250px;
+    overflow-y: scroll ;
+    overflow-x:hidden;
+}
+/* pièce d'identié */
+.identite h6{
+    color: #000;
+}
+.identite div{
+    display: flex;
+    justify-content:space-around;
+    padding-bottom: 10px;
+}
+.identite label{
+    height: 60px;
+    width: 100px;
+    margin-bottom: 5px;
+    color: #00000093;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.identite label img {
+    height: 60px;
+    width: 100px;
+    border-radius: 5px;
+
+}
+
+.identite input{
+    display: none;
+}
+
+
     </style>
 </head>
 <body>
@@ -137,14 +189,52 @@ body {
                 <h2>Inscription</h2>
                 <input type="text" placeholder="Nom complet" required>
                 <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Mot de passe" required>
+                <input type="password" class="inputpass" placeholder="Mot de passe" required>
+                <div class="telparent">
+                    <input type="tel" class="inputel" placeholder="telephone" required>
+                    <div class=" absolut"></div>
+                    <div class="dropdown dropup dropabsolut">
+                        <div class=" d-flex minput" type="button" data-bs-toggle="dropdown" id="dropdownMenuButton" aria-expanded="false">
+                            <img src="flag-guinee.png" alt="" class="dapeau"  height="28px" width="40px">
+                            <p class=" h5"> +228</p>
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <input type="text"  class="form-control mb-2 mx-auto" placeholder="Rechercher..." style="width: 90%;"/>
+                            <div id="dropdownItems" class="ps-0 dropdiv">
+                                <ul class=" g-3 " style=" padding: 0;">
+                                    <li  class="dropdown-item ps-1"  style="height: 38px">
+                                        <div class=" d-flex ms-0" style="height: 35px ;" >  
+                                            <img class="ps-2 my-1" src="flag_chine.png" alt="drapeau" height="30px">
+                                            <p  class=" ms-1 pt-1 " style="text-align: center ; width: 150px; " >i.name </p>
+                                        </div>
+                                    </li>
+                                    <li  class="dropdown-item ps-1"  style="height: 38px">
+                                        <div class=" d-flex ms-0" style="height: 35px ;" >  
+                                            <img class="ps-2 my-1" src="flag_chine.png" alt="drapeau" height="30px">
+                                            <p  class=" ms-1 pt-1 " style="text-align: center ; width: 150px; " >i.name </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="identite">
+                    <h6>enter la photo de votre piece d'identité</h6>
+                    <div>
+                        <label for="inputrecto" ><img class="img-fluid" src="identitérecto.png" alt="recto" id="imgrecto"></label>
+                        <input type="file" id="inputrecto" accept="image/png,image/jpg,image/jpeg">
+                        <label for="inputverso"><img class="img-fluid" src="identitéverso.png" alt="verso" id="imgverso"></label>
+                        <input type="file" id="inputverso" accept="image/png,image/jpg,image/jpeg">
+                    </div>
+                </div>
                 <button type="submit">S'inscrire</button>
                 <p>Déjà un compte ? <a href="#" onclick="showLogin()">Se connecter</a></p>
                 <p>retour <a href="index.html" >Page d'accueil</a></p>
             </form>
         </div>
     </div>
-
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         // Fonction pour afficher le formulaire de connexion
         function showLogin() {
@@ -156,6 +246,19 @@ body {
         function showRegister() {
             document.getElementById('register-form').classList.add('active');
             document.getElementById('login-form').classList.remove('active');
+        }
+
+        // Afficher la carte choisie
+        let imageRecto = document.getElementById("imgrecto")
+        let imageVerso = document.getElementById("imgverso")
+        let inputRecto = document.getElementById("inputrecto")
+        let inputVerso = document.getElementById("inputverso")
+
+        inputRecto.onchange = function(){
+            imageRecto.src = URL.createObjectURL(inputRecto.files[0])
+        }
+        inputVerso.onchange = function(){
+            imageVerso.src = URL.createObjectURL(inputVerso.files[0])
         }
     </script>
 </body>
