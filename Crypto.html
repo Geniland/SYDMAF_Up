@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Trade Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    .crypto-platform {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    .header h1 {
+      margin: 0;
+    }
+
+    .header p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      margin: 0 0 20px;
+      font-size: 24px;
+      color: #2c3e50;
+    }
+
+    .prices table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .prices th, .prices td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    .prices th {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .prices tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .trade-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .trade-form input, .trade-form select, .trade-form button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .trade-form button {
+      background-color: #27ae60;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .trade-form button:hover {
+      background-color: #219150;
+    }
+
+    #conversionResult {
+      font-size: 16px;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .transactions ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .transactions li {
+      background-color: #f1f1f1;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .transactions li i {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #27ae60;
+    }
+
+    .custom-select {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .custom-option {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: white;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .custom-option img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .custom-option:hover {
+      background-color: #f0f0f0;
+    }
+
+    .trade-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .trade-form select,
+    .trade-form input,
+    .trade-form button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .trade-form select option {
+      display: flex;
+      align-items: center;
+    }
+
+    a{
+       
+        color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Plateforme de Vente et d'Achat de Cryptomonnaies</h1>
+    <p>Échangez vos cryptomonnaies rapidement et en toute sécurité.</p>
+    <a href="index.html">Accueil sydmaf</a>
+  </header>
+  
+  <div class="crypto-platform">
+    <div class="section prices">
+      <h2><i class="fas fa-chart-line"></i> Taux des Cryptomonnaies</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Cryptomonnaie</th>
+            <th>Prix en FCFA</th>
+            <th>Variation</th>
+          </tr>
+        </thead>
+        <tbody id="cryptoPrices">
+          <!-- Les données dynamiques apparaîtront ici -->
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="section trade-form">
+      <h2><i class="fas fa-exchange-alt"></i> Acheter/Vendre</h2>
+      <form id="tradeForm">
+        <label for="system">Je donne :</label>
+        <div class="custom-select">
+          <div class="custom-option" data-value="TMoney">
+            <img src="systeme/yas.png" alt="TMoney Logo"> TMoney
+          </div>
+          <div class="custom-option" data-value="Flooz">
+            <img src="systeme/flooz.jpg" alt="Flooz Logo"> Flooz
+          </div>
+          <div class="custom-option" data-value="OrangeMoney">
+            <img src="systeme/orange monnais.jpeg" alt="Orange Money Logo"> Orange Money
+          </div>
+        </div>
+
+        <label for="crypto">Je recois :</label>
+        <select id="crypto" name="crypto">
+          <option value="BTC">Bitcoin (BTC)</option>
+          <option value="ETH">Ethereum (ETH)</option>
+        </select>
+  
+        <label for="amount">Montant (FCFA) :</label>
+        <input type="number" id="amount" name="amount" placeholder="Montant en FCFA" required />
+  
+        <p id="conversionResult">Montant en Crypto : 0.00</p>
+  
+        <button type="submit"><i class="fas fa-check-circle"></i> Valider</button>
+      </form>
+    </div>
+  
+    <div class="section transactions">
+      <h2><i class="fas fa-history"></i> Historique des Transactions</h2>
+      <ul id="transactionHistory">
+        <!-- Les transactions dynamiques apparaîtront ici -->
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('tradeForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const crypto = document.getElementById('crypto').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+
+      const rates = { BTC: 30000000, ETH: 2000000 }; 
+      const cryptoRate = rates[crypto];
+
+      const cryptoAmount = (amount / cryptoRate).toFixed(8);
+
+      document.getElementById('conversionResult').innerText = `Montant en Crypto : ${cryptoAmount} ${crypto}`;
+      
+      const history = document.getElementById('transactionHistory');
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `<i class="fas fa-check"></i> Achat : ${cryptoAmount} ${crypto} pour ${amount} FCFA`;
+      history.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
